@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>DEVICE SKILL</title>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	var max_fields      = 10; //maximum input boxes allowed
+	var wrapper   		= $(".input_fields_wrap"); //Fields wrapper
+	var add_button      = $(".add_field_button"); //Add button ID
+
+	var x = 1; //initlal text box count
+	$(add_button).click(function(e){ //on add input button click
+		e.preventDefault();
+		if(x < max_fields){ //max input box allowed
+			x++; //text box increment
+			$(wrapper).append('<div><input type="text" name="mytext"/>&nbsp;	&nbsp;	<input type="text" name="name"><a href="#" class="remove_field">Remove</a></div>'); //add input box
+		}
+	});
+
+	$(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+		e.preventDefault(); $(this).parent('div').remove(); x--;
+	})
+});
+$(function () {
+$("#btnGet").bind("click", function () {
+		var key = "";
+		var value = "";
+		$("input[name=mytext]").each(function () {
+				key += $(this).val() + " ,";
+		});
+		alert(key);
+		$("input[name=name]").each(function () {
+				value += $(this).val() + " ,";
+		});
+		alert(value);
+});
+})
+</script>
+</head>
+<body>
+<div class="input_fields_wrap">
+	&nbsp;	DEVICE METRIC &nbsp;	&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		DEVICE SKILL
+	    <div><input type="text" name="mytext">&nbsp;	&nbsp;
+				<input type='text' name='name'>
+			</div>
+	</div>
+	<br />
+	<button class="add_field_button">Add More Fields</button>
+	<br />
+	<input id="btnGet" type="button" value="Get Values" />
+</body>
+</html>
