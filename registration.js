@@ -20,5 +20,5 @@ model : model
 .catch(function(error) {
   console.error("Error writing document: ", error);
 });
-location.href="commandtype.html";
+location.href="old.html";
 }
